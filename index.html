@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>成语诗词名言大全站 - 中华传统文化宝库</title>
+    <meta name="description" content="收录2000+成语、1000+古诗词、1000+名人名言、1500+谚语歇后语祝福语。免费提供成语解释、出处典故、古诗词赏析、名言警句，是您学习中华传统文化的首选网站。">
+    <meta name="keywords" content="成语大全,成语解释,成语出处,古诗词,唐诗三百首,宋词,名言警句,励志名言,人生哲理,谚语大全,歇后语,祝福语,中华传统文化">
+    <meta name="author" content="成语诗词名言大全站">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourusername.github.io/chinese-culture/">
+    <meta property="og:title" content="成语诗词名言大全站 - 中华传统文化宝库">
+    <meta property="og:description" content="收录2000+成语、1000+古诗词、1000+名人名言，免费学习中华传统文化">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">
+                    <span class="logo-icon">📜</span>
+                    <span class="logo-text">成语诗词名言大全</span>
+                </h1>
+                <button class="mobile-menu-btn" aria-label="菜单" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link active" data-category="all">全部</a></li>
+                    <li><a href="#" class="nav-link" data-category="chengyu">成语</a></li>
+                    <li><a href="#" class="nav-link" data-category="tangshi">唐诗</a></li>
+                    <li><a href="#" class="nav-link" data-category="songci">宋词</a></li>
+                    <li><a href="#" class="nav-link" data-category="yuanqu">元曲</a></li>
+                    <li><a href="#" class="nav-link" data-category="mingyan">名言</a></li>
+                    <li><a href="#" class="nav-link" data-category="yanyu">谚语</a></li>
+                    <li><a href="#" class="nav-link" data-category="xiehouyu">歇后语</a></li>
+                    <li><a href="#" class="nav-link" data-category="zhufu">祝福语</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-banner">
+            <div class="container">
+                <div class="banner-content">
+                    <h2 class="banner-title">传承中华文化 · 品味诗词之美</h2>
+                    <p class="banner-subtitle">收录海量成语典故、古诗词文、名言警句</p>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索成语、诗词、名言..." autocomplete="off">
+                    <button id="searchBtn" aria-label="搜索">🔍</button>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="statChengyu">0</span>
+                        <span class="stat-label">成语</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="statShici">0</span>
+                        <span class="stat-label">诗词</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="statMingyan">0</span>
+                        <span class="stat-label">名言</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="statOther">0</span>
+                        <span class="stat-label">谚语祝福</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h3 class="section-title" id="currentCategoryTitle">全部内容</h3>
+                    <span class="result-count" id="resultCount">共 0 条结果</span>
+                </div>
+                <div class="filter-bar" id="filterBar">
+                    <select id="subCategoryFilter" class="filter-select">
+                        <option value="">全部分类</option>
+                    </select>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="default">默认排序</option>
+                        <option value="name">按名称排序</option>
+                        <option value="popular">按热度排序</option>
+                    </select>
+                </div>
+                <div class="card-grid" id="cardGrid">
+                </div>
+                <div class="loading" id="loadingIndicator" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="no-results" id="noResults" style="display: none;">
+                    <span class="no-results-icon">🔍</span>
+                    <p>未找到相关结果</p>
+                    <p class="no-results-hint">请尝试其他关键词</p>
+                </div>
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="detailModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <aside class="floating-buttons">
+        <button class="float-btn back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    </aside>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于本站</h4>
+                    <p>成语诗词名言大全站致力于传播中华优秀传统文化，收录海量成语典故、古诗词文、名言警句，供广大文学爱好者学习参考。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>内容分类</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="chengyu">成语大全</a></li>
+                        <li><a href="#" data-category="tangshi">唐诗精选</a></li>
+                        <li><a href="#" data-category="songci">宋词赏析</a></li>
+                        <li><a href="#" data-category="mingyan">名人名言</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>更多资源</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="yanyu">谚语俗语</a></li>
+                        <li><a href="#" data-category="xiehouyu">歇后语</a></li>
+                        <li><a href="#" data-category="zhufu">祝福语录</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>使用说明</h4>
+                    <p>本站内容仅供学习交流使用，欢迎收藏分享。如需商用请注明出处。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 成语诗词名言大全站 · 中华传统文化宝库 · 使用纯前端技术构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data-chengyu.js"></script>
+    <script src="data-shici.js"></script>
+    <script src="data-mingyan.js"></script>
+    <script src="data-other.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
