@@ -65,6 +65,10 @@ input, select {
 .site-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: #fff;
+    z-index: 100;
+}
+
+.header-content {
     position: sticky;
     top: 0;
     z-index: 100;
